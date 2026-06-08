@@ -1,1309 +1,667 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JM Pet - Aqui o seu Pet é prioridade</title>
-    <meta name="description" content="JM Pet - Tudo para seu pet e criação em um só lugar com preços especiais. Ração, areia, medicamentos, higiene e linha agro.">
-    <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
- 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
- 
-    <!-- Ícones (Lucide via CDN) -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
- 
-    <style>
-        :root {
-            --primary: #F97316;
-            --primary-dark: #EA580C;
-            --primary-light: #FFEDD5;
-            --primary-soft: #FFF7ED;
-            --text-dark: #1F2937;
-            --text-mid: #4B5563;
-            --text-light: #9CA3AF;
-            --bg: #FAFAFA;
-            --white: #FFFFFF;
-            --border: #F3F4F6;
-            --whatsapp: #25D366;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
-            --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 30px rgba(249,115,22,0.15);
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --radius-xl: 28px;
-        }
- 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
- 
-        html {
-            scroll-behavior: smooth;
-        }
- 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: var(--bg);
-            color: var(--text-dark);
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
- 
-        img {
-            max-width: 100%;
-            display: block;
-        }
- 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
- 
-        button {
-            font-family: inherit;
-            cursor: pointer;
-            border: none;
-            background: none;
-        }
- 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
- 
-        /* ========== HEADER ========== */
-        .header {
-            background: var(--white);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: var(--shadow-sm);
-        }
- 
-        .header-top {
-            padding: 18px 0;
-            border-bottom: 1px solid var(--border);
-        }
- 
-        .header-top-inner {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-        }
- 
-        .logo {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-        }
- 
-        .logo img {
-            height: 56px;
-            width: auto;
-            object-fit: contain;
-        }
- 
-        .search-box {
-            flex: 1;
-            position: relative;
-            max-width: 600px;
-        }
- 
-        .search-box input {
-            width: 100%;
-            padding: 14px 50px 14px 22px;
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-xl);
-            font-size: 15px;
-            font-family: inherit;
-            background: #F9FAFB;
-            transition: all 0.2s;
-            color: var(--text-dark);
-        }
- 
-        .search-box input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: var(--white);
-            box-shadow: 0 0 0 4px rgba(249,115,22,0.1);
-        }
- 
-        .search-box input::placeholder {
-            color: var(--text-light);
-        }
- 
-        .search-btn {
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 38px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-mid);
-            border-radius: 50%;
-            transition: all 0.2s;
-        }
- 
-        .search-btn:hover {
-            background: var(--primary-light);
-            color: var(--primary);
-        }
- 
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
- 
-        .icon-btn {
-            position: relative;
-            width: 46px;
-            height: 46px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-dark);
-            border-radius: 50%;
-            transition: all 0.2s;
-        }
- 
-        .icon-btn:hover {
-            background: var(--primary-light);
-            color: var(--primary);
-        }
- 
-        .icon-btn .badge {
-            position: absolute;
-            top: 6px;
-            right: 6px;
-            background: var(--primary);
-            color: white;
-            font-size: 10px;
-            font-weight: 700;
-            min-width: 18px;
-            height: 18px;
-            border-radius: 9px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 5px;
-            border: 2px solid white;
-        }
- 
-        .mobile-menu-btn {
-            display: none;
-            width: 42px;
-            height: 42px;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-dark);
-            border-radius: var(--radius-sm);
-        }
- 
-        /* ========== NAVIGATION ========== */
-        .nav-categories {
-            padding: 14px 0;
-            background: var(--white);
-        }
- 
-        .nav-categories-inner {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
- 
-        .nav-categories-inner::-webkit-scrollbar {
-            display: none;
-        }
- 
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 18px;
-            border-radius: var(--radius-xl);
-            font-weight: 600;
-            font-size: 14.5px;
-            color: var(--text-dark);
-            white-space: nowrap;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
- 
-        .nav-item:hover,
-        .nav-item.active {
-            background: var(--primary-light);
-            color: var(--primary-dark);
-        }
- 
-        .nav-item .nav-icon {
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
- 
-        /* ========== HERO ========== */
-        .hero {
-            background: var(--white);
-            position: relative;
-            overflow: hidden;
-            padding: 60px 0 100px;
-        }
- 
-        .hero-inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
- 
-        .hero-text h1 {
-            font-size: 56px;
-            font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -1.5px;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
- 
-        .hero-text p {
-            font-size: 19px;
-            color: var(--text-mid);
-            margin-bottom: 36px;
-            max-width: 460px;
-        }
- 
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 38px;
-            background: var(--primary);
-            color: white;
-            font-weight: 700;
-            font-size: 15px;
-            border-radius: 50px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.25s;
-            box-shadow: var(--shadow-lg);
-        }
- 
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 14px 36px rgba(249,115,22,0.28);
-        }
- 
-        .hero-image {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
- 
-        .hero-animals {
-            width: 100%;
-            max-width: 600px;
-            position: relative;
-            z-index: 2;
-        }
- 
-        .hero-animals img {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-        }
- 
-        /* Onda decorativa laranja */
-        .hero-wave {
-            position: absolute;
-            bottom: 70px;
-            left: 0;
-            width: 100%;
-            height: 80px;
-            z-index: 1;
-            pointer-events: none;
-        }
- 
-        .hero-wave svg {
-            width: 100%;
-            height: 100%;
-        }
- 
-        /* ========== SECTION TITLES ========== */
-        .section {
-            padding: 60px 0;
-        }
- 
-        .section-title {
-            font-size: 30px;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 36px;
-            letter-spacing: -0.6px;
-        }
- 
-        /* ========== PRODUCTS ========== */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
- 
-        .product-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            padding: 20px;
-            transition: all 0.3s;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            border: 1px solid var(--border);
-        }
- 
-        .product-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-            border-color: var(--primary-light);
-        }
- 
-        .product-badge {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            background: var(--primary);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            z-index: 2;
-        }
- 
-        .product-image {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, #FAFAFA 0%, #F3F4F6 100%);
-            border-radius: var(--radius-md);
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            padding: 12px;
-        }
- 
-        .product-image img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            transition: transform 0.35s;
-        }
- 
-        .product-card:hover .product-image img {
-            transform: scale(1.06);
-        }
- 
-        .product-name {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 6px;
-            line-height: 1.3;
-            min-height: 38px;
-        }
- 
-        .product-weight {
-            font-size: 13px;
-            color: var(--text-light);
-            font-weight: 500;
-        }
- 
-        .product-price {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--primary);
-            margin: 10px 0 16px;
-            letter-spacing: -0.5px;
-        }
- 
-        .product-price .currency {
-            font-size: 14px;
-            font-weight: 600;
-            margin-right: 2px;
-        }
- 
-        .btn-add {
-            width: 100%;
-            padding: 12px 16px;
-            background: var(--primary);
-            color: white;
-            font-weight: 700;
-            font-size: 14px;
-            border-radius: var(--radius-xl);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            transition: all 0.2s;
-            margin-top: auto;
-        }
- 
-        .btn-add:hover {
-            background: var(--primary-dark);
-            transform: scale(1.02);
-        }
- 
-        /* ========== BENEFITS ========== */
-        .benefits {
-            background: var(--white);
-            padding: 70px 0;
-            border-top: 1px solid var(--border);
-        }
- 
-        .benefits-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 36px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
- 
-        .benefits-header h2 {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--text-dark);
-            letter-spacing: -0.5px;
-        }
- 
-        .contact-pill {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
- 
-        .pix-pill {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 22px;
-            background: var(--white);
-            border: 1.5px solid #E5E7EB;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 15px;
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
- 
-        .pix-pill:hover {
-            border-color: var(--primary);
-            background: var(--primary-soft);
-        }
- 
-        .pix-pill .pix-logo {
-            width: 24px;
-            height: 24px;
-            color: #32BCAD;
-        }
- 
-        .whatsapp-pill {
-            width: 48px;
-            height: 48px;
-            background: var(--whatsapp);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
- 
-        .whatsapp-pill:hover {
-            transform: scale(1.08);
-            background: #1FB855;
-        }
- 
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
- 
-        .benefit-card {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 22px 26px;
-            background: var(--white);
-            border: 1.5px solid var(--border);
-            border-radius: var(--radius-lg);
-            transition: all 0.25s;
-        }
- 
-        .benefit-card:hover {
-            border-color: var(--primary-light);
-            background: var(--primary-soft);
-        }
- 
-        .benefit-icon {
-            width: 52px;
-            height: 52px;
-            background: var(--primary-light);
-            color: var(--primary);
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
- 
-        .benefit-text strong {
-            display: block;
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 2px;
-        }
- 
-        .benefit-text span {
-            font-size: 14px;
-            color: var(--text-mid);
-        }
- 
-        /* ========== FOOTER ========== */
-        .footer {
-            background: #1F2937;
-            color: #D1D5DB;
-            padding: 60px 0 30px;
-        }
- 
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
- 
-        .footer-col h4 {
-            color: white;
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 18px;
-        }
- 
-        .footer-col p {
-            font-size: 14px;
-            color: #9CA3AF;
-            margin-bottom: 12px;
-            line-height: 1.6;
-        }
- 
-        .footer-col ul {
-            list-style: none;
-        }
- 
-        .footer-col li {
-            margin-bottom: 10px;
-        }
- 
-        .footer-col a {
-            font-size: 14px;
-            color: #9CA3AF;
-            transition: color 0.2s;
-        }
- 
-        .footer-col a:hover {
-            color: var(--primary);
-        }
- 
-        .footer-logo {
-            background: white;
-            border-radius: 12px;
-            padding: 10px;
-            display: inline-flex;
-            margin-bottom: 16px;
-        }
- 
-        .footer-logo img {
-            height: 50px;
-            width: auto;
-        }
- 
-        .footer-bottom {
-            padding-top: 30px;
-            border-top: 1px solid #374151;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 13px;
-            color: #6B7280;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
- 
-        .social-links {
-            display: flex;
-            gap: 12px;
-        }
- 
-        .social-link {
-            width: 38px;
-            height: 38px;
-            background: #374151;
-            color: #D1D5DB;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
- 
-        .social-link:hover {
-            background: var(--primary);
-            color: white;
-        }
- 
-        /* ========== WHATSAPP FLOATING ========== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 60px;
-            height: 60px;
-            background: var(--whatsapp);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 24px rgba(37,211,102,0.4);
-            z-index: 99;
-            transition: all 0.25s;
-            animation: pulseBtn 2s infinite;
-        }
- 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
- 
-        @keyframes pulseBtn {
-            0%, 100% { box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
-            50% { box-shadow: 0 8px 24px rgba(37,211,102,0.4), 0 0 0 12px rgba(37,211,102,0.15); }
-        }
- 
-        /* ========== TOAST ========== */
-        .toast {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            background: var(--text-dark);
-            color: white;
-            padding: 14px 22px;
-            border-radius: var(--radius-md);
-            font-size: 14px;
-            font-weight: 600;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transform: translateX(calc(100% + 48px));
-            transition: transform 0.35s cubic-bezier(.2,.8,.3,1.2);
-        }
- 
-        .toast.show {
-            transform: translateX(0);
-        }
- 
-        .toast .check-icon {
-            color: #22C55E;
-        }
- 
-        /* ========== ANIMATIONS ========== */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
- 
-        .hero-text > * {
-            animation: fadeUp 0.6s ease-out backwards;
-        }
-        .hero-text h1 { animation-delay: 0.05s; }
-        .hero-text p { animation-delay: 0.15s; }
-        .hero-text .btn-primary { animation-delay: 0.25s; }
- 
-        .hero-image {
-            animation: fadeUp 0.7s ease-out 0.2s backwards;
-        }
- 
-        .product-card {
-            animation: fadeUp 0.5s ease-out backwards;
-        }
-        .product-card:nth-child(1) { animation-delay: 0.05s; }
-        .product-card:nth-child(2) { animation-delay: 0.1s; }
-        .product-card:nth-child(3) { animation-delay: 0.15s; }
-        .product-card:nth-child(4) { animation-delay: 0.2s; }
- 
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 1024px) {
-            .products-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            .hero-text h1 {
-                font-size: 44px;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
- 
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 16px;
-            }
-            .header-top-inner {
-                gap: 12px;
-                flex-wrap: wrap;
-            }
-            .logo img {
-                height: 44px;
-            }
-            .mobile-menu-btn {
-                display: flex;
-            }
-            .search-box {
-                order: 3;
-                flex: 1 0 100%;
-            }
-            .search-box input {
-                padding: 12px 46px 12px 18px;
-                font-size: 14px;
-            }
-            .header-actions {
-                margin-left: auto;
-            }
-            .icon-btn {
-                width: 40px;
-                height: 40px;
-            }
-            .nav-item {
-                padding: 8px 14px;
-                font-size: 13px;
-            }
-            .nav-item .nav-icon svg {
-                width: 18px;
-                height: 18px;
-            }
-            .hero {
-                padding: 30px 0 60px;
-            }
-            .hero-inner {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .hero-text {
-                order: 1;
-                text-align: center;
-            }
-            .hero-image {
-                order: 2;
-            }
-            .hero-text p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-text h1 {
-                font-size: 34px;
-            }
-            .hero-text p {
-                font-size: 16px;
-            }
-            .btn-primary {
-                padding: 14px 32px;
-                font-size: 14px;
-            }
-            .hero-wave {
-                bottom: 30px;
-            }
-            .section {
-                padding: 40px 0;
-            }
-            .section-title {
-                font-size: 22px;
-                margin-bottom: 22px;
-            }
-            .products-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            .product-card {
-                padding: 14px;
-            }
-            .product-name {
-                font-size: 14px;
-                min-height: 36px;
-            }
-            .product-price {
-                font-size: 19px;
-            }
-            .btn-add {
-                padding: 10px;
-                font-size: 13px;
-            }
-            .benefits-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .footer-bottom {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-            .whatsapp-float {
-                width: 54px;
-                height: 54px;
-                bottom: 18px;
-                right: 18px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JM Pet – Aqui o seu Pet é Prioridade</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          brand: {
+            orange: '#F58220',
+            'orange-dark': '#D96D10',
+            'orange-light': '#FFF3E8',
+            dark: '#1A1A1B',
+            gray: '#F9F9F9',
+          }
+        },
+        fontFamily: {
+          display: ['Fraunces', 'serif'],
+          body: ['Plus Jakarta Sans', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  .font-display { font-family: 'Fraunces', serif; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .animate-fade-up { animation: fadeInUp 0.7s ease forwards; }
+  .animate-fade { animation: fadeIn 0.9s ease forwards; }
+  .delay-1 { animation-delay: 0.1s; opacity: 0; }
+  .delay-2 { animation-delay: 0.25s; opacity: 0; }
+  .delay-3 { animation-delay: 0.4s; opacity: 0; }
+  .delay-4 { animation-delay: 0.55s; opacity: 0; }
+
+  .wave-divider {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  .btn-orange {
+    background: #F58220;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(245,130,32,0.35);
+  }
+  .btn-orange:hover {
+    background: #D96D10;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(245,130,32,0.45);
+  }
+  .btn-orange:active { transform: translateY(0); }
+
+  .product-card { transition: transform 0.2s, box-shadow 0.2s; }
+  .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+
+  .category-pill { transition: all 0.2s; }
+  .category-pill:hover { background: #F58220; color: #fff; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(245,130,32,0.3); }
+
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+    background: #25D366;
+    color: white;
+    border-radius: 50px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: 0 8px 30px rgba(37,211,102,0.45);
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .whatsapp-float:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(37,211,102,0.55); }
+
+  .hero-bg {
+    background: linear-gradient(135deg, #fff 55%, #FFF3E8 100%);
+  }
+
+  .pix-badge {
+    background: linear-gradient(90deg, #32BCAD 0%, #1a9e93 100%);
+    color: white;
+    border-radius: 8px;
+    padding: 8px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .obs-scroll { scroll-behavior: smooth; }
+
+  nav { backdrop-filter: blur(12px); }
+
+  .highlight-orange { color: #F58220; }
+
+  @media (max-width: 640px) {
+    .hero-animals { max-height: 260px; }
+  }
+</style>
 </head>
-<body>
- 
-    <!-- HEADER -->
-    <header class="header">
-        <div class="container">
-            <div class="header-top">
-                <div class="header-top-inner">
-                    <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
-                        <i data-lucide="menu"></i>
-                    </button>
-                    <a href="#" class="logo">
-                        <img src="assets/logo.jpg" alt="JM Pet">
-                    </a>
-                    <div class="search-box">
-                        <input type="text" id="searchInput" placeholder="O que seu pet ou criação precisa hoje?">
-                        <button class="search-btn" aria-label="Buscar" onclick="handleSearch()">
-                            <i data-lucide="search"></i>
-                        </button>
-                    </div>
-                    <div class="header-actions">
-                        <button class="icon-btn" aria-label="Minha conta" title="Minha conta">
-                            <i data-lucide="user"></i>
-                        </button>
-                        <button class="icon-btn" aria-label="Favoritos" title="Favoritos">
-                            <i data-lucide="heart"></i>
-                        </button>
-                        <button class="icon-btn" aria-label="Carrinho" title="Carrinho" onclick="openCart()">
-                            <i data-lucide="shopping-cart"></i>
-                            <span class="badge" id="cartBadge">0</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
- 
-            <!-- NAVIGATION -->
-            <nav class="nav-categories">
-                <div class="nav-categories-inner">
-                    <a href="#" class="nav-item active" data-cat="dog">
-                        <span class="nav-icon"><i data-lucide="dog"></i></span>
-                        Dog
-                    </a>
-                    <a href="#" class="nav-item" data-cat="cat">
-                        <span class="nav-icon"><i data-lucide="cat"></i></span>
-                        Cat
-                    </a>
-                    <a href="#" class="nav-item" data-cat="passaros">
-                        <span class="nav-icon"><i data-lucide="bird"></i></span>
-                        Pássaros
-                    </a>
-                    <a href="#" class="nav-item" data-cat="medicamentos">
-                        <span class="nav-icon"><i data-lucide="pill"></i></span>
-                        Medicamentos
-                    </a>
-                    <a href="#" class="nav-item" data-cat="higiene">
-                        <span class="nav-icon"><i data-lucide="droplets"></i></span>
-                        Higiene
-                    </a>
-                    <a href="#" class="nav-item" data-cat="agro">
-                        <span class="nav-icon"><i data-lucide="tractor"></i></span>
-                        Linha/Agro
-                    </a>
-                </div>
-            </nav>
+<body class="bg-white text-brand-dark obs-scroll">
+
+<!-- ======= WHATSAPP FLOAT ======= -->
+<a href="https://wa.me/5574988226804" target="_blank" class="whatsapp-float">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.771.463 3.431 1.27 4.878L2.05 22l5.255-1.376A9.934 9.934 0 0012.004 22C17.527 22 22 17.523 22 12.004 22 6.477 17.527 2 12.004 2zm0 18.12a8.1 8.1 0 01-4.145-1.133l-.297-.177-3.12.817.833-3.042-.194-.312A8.094 8.094 0 013.88 12.004c0-4.482 3.647-8.12 8.124-8.12 4.482 0 8.124 3.638 8.124 8.12 0 4.477-3.642 8.116-8.124 8.116z"/></svg>
+  Chamar no WhatsApp
+</a>
+
+<!-- ======= NAVBAR ======= -->
+<nav class="sticky top-0 z-50 bg-white/90 border-b border-gray-100 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <div class="flex items-center">
+          <span class="font-display text-2xl font-black text-brand-dark leading-none">JM</span>
+          <span class="font-display text-2xl font-black text-brand-orange leading-none ml-0.5">PET</span>
         </div>
-    </header>
- 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-inner">
-                <div class="hero-text">
-                    <h1>Aqui o seu Pet<br>é prioridade.</h1>
-                    <p>Tudo em um só lugar com preços especiais para seu pet e sua criação.</p>
-                    <a href="#produtos" class="btn-primary">
-                        Comprar agora
-                        <i data-lucide="arrow-right"></i>
-                    </a>
-                </div>
-                <div class="hero-image">
-                    <!-- IMAGEM HERO: usei uma imagem composta de animais. Você pode substituir por uma própria. -->
-                    <div class="hero-animals">
-                        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=800&q=80"
-                             alt="Animais felizes"
-                             onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 600 500%22><rect width=%22600%22 height=%22500%22 fill=%22%23FFF7ED%22 rx=%2220%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-family=%22Arial%22 font-size=%2220%22 fill=%22%23F97316%22>🐶 🐱 🐰 🐔 🐮</text></svg>'">
-                    </div>
-                </div>
-            </div>
+      </div>
+
+      <!-- Search (desktop) -->
+      <div class="hidden md:flex flex-1 max-w-md mx-8">
+        <div class="relative w-full">
+          <input type="text" placeholder="O que seu pet ou criação precisa hoje?" class="w-full border border-gray-200 rounded-full py-2.5 pl-4 pr-10 text-sm focus:outline-none focus:border-brand-orange transition-colors">
+          <button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-orange transition-colors">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
         </div>
-        <!-- Onda decorativa laranja -->
-        <div class="hero-wave">
-            <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0,40 C320,80 720,0 1080,40 C1260,60 1380,30 1440,40 L1440,80 L0,80 Z"
-                      fill="#F97316" opacity="0.85"/>
-                <path d="M0,55 C360,30 760,75 1140,50 C1290,40 1390,55 1440,50 L1440,80 L0,80 Z"
-                      fill="#F97316" opacity="0.35"/>
-            </svg>
-        </div>
-    </section>
- 
-    <!-- PRODUTOS EM DESTAQUE -->
-    <section class="section" id="produtos">
-        <div class="container">
-            <h2 class="section-title">Produtos em Destaque</h2>
-            <div class="products-grid" id="productsGrid">
-                <!-- Os produtos são renderizados via JavaScript abaixo -->
-            </div>
-        </div>
-    </section>
- 
-    <!-- BENEFÍCIOS / POR QUE COMPRAR -->
-    <section class="benefits">
-        <div class="container">
-            <div class="benefits-header">
-                <h2>Por que comprar com a JM Pet?</h2>
-                <div class="contact-pill">
-                    <button class="pix-pill" onclick="copyPix()" title="Clique para copiar">
-                        <svg class="pix-logo" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.283 18.36a3.5 3.5 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.5 3.5 0 0 0 2.493 1.032h.71l-4.56 4.56a3.21 3.21 0 0 1-4.54 0L5.474 18.36zm13.144-12.733a3.5 3.5 0 0 0-2.493 1.032l-3.613 3.613a.67.67 0 0 1-.946 0l-3.6-3.6A3.5 3.5 0 0 0 5.282 5.64h-.453L9.435 1.04a3.21 3.21 0 0 1 4.541 0l4.547 4.587zM1.04 9.435 3.74 6.733h1.543a2.5 2.5 0 0 1 1.778.737l3.6 3.6a1.689 1.689 0 0 0 2.388 0l3.612-3.613a2.5 2.5 0 0 1 1.778-.737h1.819l2.7 2.715a3.21 3.21 0 0 1 0 4.54l-2.7 2.702h-1.82a2.5 2.5 0 0 1-1.777-.738l-3.612-3.613a1.733 1.733 0 0 0-2.388 0l-3.6 3.6a2.5 2.5 0 0 1-1.778.738H3.739l-2.7-2.702a3.21 3.21 0 0 1 0-4.54"/>
-                        </svg>
-                        <span>(74) 98822-6804</span>
-                    </button>
-                    <a href="https://wa.me/5574988226804" target="_blank" class="whatsapp-pill" aria-label="WhatsApp">
-                        <i data-lucide="message-circle"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i data-lucide="truck"></i>
-                    </div>
-                    <div class="benefit-text">
-                        <strong>Entrega rápida</strong>
-                        <span>na região</span>
-                    </div>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i data-lucide="hand-coins"></i>
-                    </div>
-                    <div class="benefit-text">
-                        <strong>O melhor preço</strong>
-                        <span>para criadores</span>
-                    </div>
-                </div>
-                <div class="benefit-card">
-                    <div class="benefit-icon">
-                        <i data-lucide="message-circle-heart"></i>
-                    </div>
-                    <div class="benefit-text">
-                        <strong>Atendimento humanizado</strong>
-                        <span>via WhatsApp</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
- 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="footer-logo">
-                        <img src="assets/logo.jpg" alt="JM Pet">
-                    </div>
-                    <p>Tudo para o seu pet e para sua criação, em um só lugar. Atendimento humanizado, entrega rápida e os melhores preços da região.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Categorias</h4>
-                    <ul>
-                        <li><a href="#">Cães</a></li>
-                        <li><a href="#">Gatos</a></li>
-                        <li><a href="#">Pássaros</a></li>
-                        <li><a href="#">Medicamentos</a></li>
-                        <li><a href="#">Higiene</a></li>
-                        <li><a href="#">Linha Agro</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Atendimento</h4>
-                    <ul>
-                        <li><a href="#">Fale conosco</a></li>
-                        <li><a href="#">Política de Trocas</a></li>
-                        <li><a href="#">Frete e Entrega</a></li>
-                        <li><a href="#">Termos de uso</a></li>
-                        <li><a href="#">Privacidade</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contato</h4>
-                    <ul>
-                        <li><a href="https://wa.me/5574988226804">📱 (74) 98822-6804</a></li>
-                        <li><a href="#">📧 contato@jmpet.com.br</a></li>
-                        <li><a href="#">📍 Petrolina - PE</a></li>
-                        <li><a href="#">🕒 Seg a Sáb, 8h às 18h</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span>© 2026 JM Pet. Todos os direitos reservados.</span>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Instagram"><i data-lucide="instagram"></i></a>
-                    <a href="#" class="social-link" aria-label="Facebook"><i data-lucide="facebook"></i></a>
-                    <a href="https://wa.me/5574988226804" class="social-link" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
-                </div>
-            </div>
-        </div>
-    </footer>
- 
-    <!-- WHATSAPP FLUTUANTE -->
-    <a href="https://wa.me/5574988226804?text=Olá!%20Vim%20pelo%20site%20da%20JM%20Pet"
-       target="_blank"
-       class="whatsapp-float"
-       aria-label="Fale conosco no WhatsApp">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/>
-        </svg>
-    </a>
- 
-    <!-- TOAST DE NOTIFICAÇÃO -->
-    <div class="toast" id="toast">
-        <i data-lucide="check-circle-2" class="check-icon"></i>
-        <span id="toastMessage">Produto adicionado!</span>
+      </div>
+
+      <!-- Icons -->
+      <div class="flex items-center gap-5 text-gray-500">
+        <button class="hover:text-brand-orange transition-colors hidden sm:block">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+        <button class="hover:text-brand-orange transition-colors hidden sm:block">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </button>
+        <button class="hover:text-brand-orange transition-colors relative">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61H19a2 2 0 001.98-1.61L23 6H6"/></svg>
+          <span class="absolute -top-1.5 -right-1.5 bg-brand-orange text-white text-xs w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+        </button>
+        <!-- Hamburger -->
+        <button class="md:hidden hover:text-brand-orange transition-colors">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
     </div>
- 
-    <script>
-        // ============================================================
-        // CATÁLOGO DE PRODUTOS
-        // (Substitua as URLs das imagens pelas imagens reais dos seus produtos)
-        // ============================================================
-        const products = [
-            {
-                id: 1,
-                name: "Areia Maz Cat",
-                weight: "12kg",
-                price: 35.90,
-                image: "https://down-br.img.susercontent.com/file/9b3b9e1d3b5f0e7e9b9a8b8c8b7a6a5a",
-                fallback: createPlaceholder("Areia Maz Cat 12kg", "#F97316"),
-                badge: "Mais vendido"
-            },
-            {
-                id: 2,
-                name: "Ração Billy Dog",
-                weight: "13kg",
-                price: 84.90,
-                image: "https://down-br.img.susercontent.com/file/billy-dog-placeholder",
-                fallback: createPlaceholder("Ração Billy Dog 13kg", "#EAB308"),
-                badge: null
-            },
-            {
-                id: 3,
-                name: "Ração Bistedog",
-                weight: "10,1kg",
-                price: 79.90,
-                image: "https://down-br.img.susercontent.com/file/bistedog-placeholder",
-                fallback: createPlaceholder("Ração Bistedog", "#7C2D12"),
-                badge: "Oferta"
-            },
-            {
-                id: 4,
-                name: "Cama Pet Pelúcia GG",
-                weight: "Tamanho GG",
-                price: 119.90,
-                image: "https://down-br.img.susercontent.com/file/cama-pet-placeholder",
-                fallback: createPlaceholder("Cama Pet Pelúcia", "#D4A373"),
-                badge: null
-            }
-        ];
- 
-        // Cria um placeholder SVG bonitinho como fallback caso a imagem não carregue
-        function createPlaceholder(text, color) {
-            const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'>
-                <rect width='200' height='200' fill='${color}' opacity='0.1' rx='12'/>
-                <rect x='50' y='40' width='100' height='120' fill='${color}' rx='8' opacity='0.85'/>
-                <rect x='60' y='55' width='80' height='25' fill='white' rx='4' opacity='0.9'/>
-                <text x='100' y='73' font-family='Arial' font-size='10' font-weight='bold' fill='${color}' text-anchor='middle'>${text.split(' ')[0]}</text>
-                <text x='100' y='185' font-family='Arial' font-size='11' font-weight='600' fill='${color}' text-anchor='middle'>${text}</text>
-            </svg>`;
-            return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
-        }
- 
-        // ============================================================
-        // RENDERIZAÇÃO DOS PRODUTOS
-        // ============================================================
-        function renderProducts() {
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = products.map(p => `
-                <article class="product-card" data-id="${p.id}">
-                    ${p.badge ? `<span class="product-badge">${p.badge}</span>` : ''}
-                    <div class="product-image">
-                        <img src="${p.fallback}"
-                             alt="${p.name}"
-                             onerror="this.src='${p.fallback}'">
-                    </div>
-                    <h3 class="product-name">${p.name} <span style="font-weight:400;color:var(--text-light);font-size:13px">${p.weight}</span></h3>
-                    <div class="product-price"><span class="currency">R$</span>${p.price.toFixed(2).replace('.', ',')}</div>
-                    <button class="btn-add" onclick="addToCart(${p.id})">
-                        <i data-lucide="plus" style="width:16px;height:16px"></i>
-                        Adicionar
-                    </button>
-                </article>
-            `).join('');
-            lucide.createIcons();
-        }
- 
-        // ============================================================
-        // CARRINHO
-        // ============================================================
-        let cart = [];
- 
-        function addToCart(productId) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
- 
-            const existing = cart.find(item => item.id === productId);
-            if (existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ ...product, qty: 1 });
-            }
- 
-            updateCartBadge();
-            showToast(`${product.name} adicionado ao carrinho!`);
-        }
- 
-        function updateCartBadge() {
-            const badge = document.getElementById('cartBadge');
-            const total = cart.reduce((sum, item) => sum + item.qty, 0);
-            badge.textContent = total;
-            badge.style.display = total > 0 ? 'flex' : 'none';
-        }
- 
-        function openCart() {
-            if (cart.length === 0) {
-                showToast('Seu carrinho está vazio');
-                return;
-            }
-            const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            const list = cart.map(item => `• ${item.qty}x ${item.name} - R$ ${(item.price * item.qty).toFixed(2).replace('.', ',')}`).join('\n');
-            const msg = `Olá! Gostaria de pedir:\n\n${list}\n\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
-            window.open(`https://wa.me/5574988226804?text=${encodeURIComponent(msg)}`, '_blank');
-        }
- 
-        // ============================================================
-        // BUSCA
-        // ============================================================
-        function handleSearch() {
-            const query = document.getElementById('searchInput').value.trim();
-            if (!query) {
-                showToast('Digite algo para buscar');
-                return;
-            }
-            showToast(`Buscando por "${query}"...`);
-        }
- 
-        document.getElementById('searchInput').addEventListener('keypress', e => {
-            if (e.key === 'Enter') handleSearch();
-        });
- 
-        // ============================================================
-        // PIX - COPIAR CHAVE
-        // ============================================================
-        function copyPix() {
-            const pixKey = '74988226804';
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(pixKey).then(() => {
-                    showToast('Chave Pix copiada!');
-                }).catch(() => {
-                    showToast('Chave Pix: ' + pixKey);
-                });
-            } else {
-                showToast('Chave Pix: ' + pixKey);
-            }
-        }
- 
-        // ============================================================
-        // CATEGORIAS - INTERAÇÃO
-        // ============================================================
-        document.querySelectorAll('.nav-item').forEach(item => {
-            item.addEventListener('click', e => {
-                e.preventDefault();
-                document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-                const cat = item.dataset.cat;
-                showToast(`Categoria: ${item.textContent.trim()}`);
-            });
-        });
- 
-        // ============================================================
-        // TOAST
-        // ============================================================
-        let toastTimer;
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            document.getElementById('toastMessage').textContent = message;
-            toast.classList.add('show');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => toast.classList.remove('show'), 2800);
-        }
- 
-        // ============================================================
-        // INICIALIZAÇÃO
-        // ============================================================
-        document.addEventListener('DOMContentLoaded', () => {
-            renderProducts();
-            updateCartBadge();
-            lucide.createIcons();
-        });
-    </script>
+
+    <!-- Category bar -->
+    <div class="flex items-center gap-2 pb-3 overflow-x-auto scrollbar-hide">
+      <a href="#" class="category-pill flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-gray-200 text-sm font-semibold whitespace-nowrap cursor-pointer text-brand-dark bg-white">
+        <span>🐕</span> Dog
+      </a>
+      <a href="#" class="category-pill flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-gray-200 text-sm font-semibold whitespace-nowrap cursor-pointer text-brand-dark bg-white">
+        <span>🐈</span> Cat
+      </a>
+      <a href="#" class="category-pill flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-gray-200 text-sm font-semibold whitespace-nowrap cursor-pointer text-brand-dark bg-white">
+        <span>🦜</span> Pássaros
+      </a>
+      <a href="#" class="category-pill flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-gray-200 text-sm font-semibold whitespace-nowrap cursor-pointer text-brand-dark bg-white">
+        <span>💊</span> Medicamentos
+      </a>
+      <a href="#" class="category-pill flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-gray-200 text-sm font-semibold whitespace-nowrap cursor-pointer text-brand-dark bg-white">
+        <span>🛁</span> Higiene
+      </a>
+      <a href="#" class="category-pill flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-gray-200 text-sm font-semibold whitespace-nowrap cursor-pointer text-brand-dark bg-white">
+        <span>🚜</span> Linha/Agro
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ======= HERO ======= -->
+<section class="relative overflow-hidden hero-bg">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-20">
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-4">
+
+      <!-- Text -->
+      <div class="flex-1 z-10">
+        <div class="animate-fade-up delay-1">
+          <span class="inline-block bg-brand-orange-light text-brand-orange text-sm font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide uppercase">
+            🎉 Preços especiais de lançamento
+          </span>
+        </div>
+        <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] text-brand-dark mb-6 animate-fade-up delay-2">
+          Aqui o seu Pet<br>
+          <span class="highlight-orange">é prioridade.</span>
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-600 max-w-md mb-8 leading-relaxed animate-fade-up delay-3">
+          Tudo o que ele precisa — da ração ao cuidado médico — entregue na sua porta com o carinho que ele merece.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 animate-fade-up delay-4">
+          <a href="#produtos" class="btn-orange inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base uppercase tracking-widest">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61H19a2 2 0 001.98-1.61L23 6H6"/></svg>
+            Comprar Agora
+          </a>
+          <a href="https://wa.me/5574988226804" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base font-bold border-2 border-brand-dark text-brand-dark hover:bg-brand-dark hover:text-white transition-all">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.771.463 3.431 1.27 4.878L2.05 22l5.255-1.376A9.934 9.934 0 0012.004 22C17.527 22 22 17.523 22 12.004 22 6.477 17.527 2 12.004 2zm0 18.12a8.1 8.1 0 01-4.145-1.133l-.297-.177-3.12.817.833-3.042-.194-.312A8.094 8.094 0 013.88 12.004c0-4.482 3.647-8.12 8.124-8.12 4.482 0 8.124 3.638 8.124 8.12 0 4.477-3.642 8.116-8.124 8.116z"/></svg>
+            Falar no WhatsApp
+          </a>
+        </div>
+
+        <!-- PIX badge -->
+        <div class="mt-6 flex items-center gap-3 animate-fade-up delay-4">
+          <div class="pix-badge">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            Pix: (74) 98822-6804
+          </div>
+          <span class="text-sm text-gray-500 font-medium">• Cartão • Boleto</span>
+        </div>
+      </div>
+
+      <!-- Hero image placeholder (animals composê) -->
+      <div class="flex-1 flex justify-center md:justify-end relative animate-fade delay-2">
+        <div class="relative">
+          <!-- Orange wave behind -->
+          <div class="absolute bottom-0 right-0 w-80 h-80 bg-brand-orange rounded-full opacity-10 blur-3xl"></div>
+          <!-- Animal group illustration box -->
+          <div class="relative z-10 w-full max-w-sm md:max-w-lg">
+            <div class="bg-gradient-to-br from-brand-orange-light to-orange-100 rounded-3xl p-8 text-center shadow-xl">
+              <div class="text-8xl mb-4 leading-none">🐕🐈</div>
+              <div class="text-6xl leading-none">🐴🐑🐖🐓</div>
+              <p class="mt-4 text-brand-orange font-bold text-sm tracking-wider uppercase">Cuidado para todos os seus animais</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Orange wave -->
+  <div class="wave-divider">
+    <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#F58220" opacity="0.08"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ======= DIFERENCIAIS ======= -->
+<section class="bg-brand-dark text-white py-5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 text-sm font-semibold text-center">
+      <div class="flex items-center gap-2.5 text-white/90">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Entrega rápida na região
+      </div>
+      <div class="hidden sm:block w-px h-6 bg-white/20"></div>
+      <div class="flex items-center gap-2.5 text-white/90">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        O melhor preço para criadores
+      </div>
+      <div class="hidden sm:block w-px h-6 bg-white/20"></div>
+      <div class="flex items-center gap-2.5 text-white/90">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        Atendimento humanizado via WhatsApp
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PRODUTOS EM DESTAQUE ======= -->
+<section id="produtos" class="py-20 bg-brand-gray">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="mb-10">
+      <h2 class="font-display text-4xl font-black text-brand-dark">Produtos em Destaque</h2>
+      <p class="text-gray-500 mt-2">As melhores marcas que seu pet já provou</p>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+
+      <!-- Produto 1 -->
+      <div class="product-card bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col">
+        <div class="bg-gray-50 rounded-xl h-36 flex items-center justify-center mb-3 text-5xl">🪨</div>
+        <div class="flex-1">
+          <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-0.5">Higiene Felina</p>
+          <h3 class="font-bold text-sm text-brand-dark leading-tight">Areia Maz Cat 12kg</h3>
+        </div>
+        <div class="mt-3">
+          <p class="text-brand-orange font-black text-xl">R$ 35,90</p>
+          <button class="btn-orange w-full mt-2 py-2.5 rounded-xl text-sm flex items-center justify-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Adicionar
+          </button>
+        </div>
+      </div>
+
+      <!-- Produto 2 -->
+      <div class="product-card bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col">
+        <div class="bg-gray-50 rounded-xl h-36 flex items-center justify-center mb-3 text-5xl">🦴</div>
+        <div class="flex-1">
+          <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-0.5">Cães</p>
+          <h3 class="font-bold text-sm text-brand-dark leading-tight">Ração Billy Dog 13kg</h3>
+        </div>
+        <div class="mt-3">
+          <p class="text-brand-orange font-black text-xl">R$ 84,90</p>
+          <button class="btn-orange w-full mt-2 py-2.5 rounded-xl text-sm flex items-center justify-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Adicionar
+          </button>
+        </div>
+      </div>
+
+      <!-- Produto 3 (destaque) -->
+      <div class="product-card bg-white rounded-2xl p-4 border-2 border-brand-orange flex flex-col relative shadow-md">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">⭐ Mais Vendido</div>
+        <div class="bg-orange-50 rounded-xl h-36 flex items-center justify-center mb-3 text-5xl">🐶</div>
+        <div class="flex-1">
+          <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-0.5">Cães Premium</p>
+          <h3 class="font-bold text-sm text-brand-dark leading-tight">Ração Bistedog 15kg</h3>
+        </div>
+        <div class="mt-3">
+          <p class="text-brand-orange font-black text-xl">R$ 79,90</p>
+          <button class="btn-orange w-full mt-2 py-2.5 rounded-xl text-sm flex items-center justify-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Adicionar
+          </button>
+        </div>
+      </div>
+
+      <!-- Produto 4 -->
+      <div class="product-card bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col">
+        <div class="bg-gray-50 rounded-xl h-36 flex items-center justify-center mb-3 text-5xl">🐕</div>
+        <div class="flex-1">
+          <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-0.5">Cães</p>
+          <h3 class="font-bold text-sm text-brand-dark leading-tight">Ração Bistedog 10,1kg</h3>
+        </div>
+        <div class="mt-3">
+          <p class="text-brand-orange font-black text-xl">R$ 64,90</p>
+          <button class="btn-orange w-full mt-2 py-2.5 rounded-xl text-sm flex items-center justify-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Adicionar
+          </button>
+        </div>
+      </div>
+
+      <!-- Produto 5 -->
+      <div class="product-card bg-white rounded-2xl p-4 shadow-sm border border-gray-100 flex flex-col">
+        <div class="bg-gray-50 rounded-xl h-36 flex items-center justify-center mb-3 text-5xl">🛏️</div>
+        <div class="flex-1">
+          <p class="text-xs text-gray-400 font-semibold uppercase tracking-wide mb-0.5">Acessórios</p>
+          <h3 class="font-bold text-sm text-brand-dark leading-tight">Cama Pet Pelúcia GG</h3>
+        </div>
+        <div class="mt-3">
+          <p class="text-brand-orange font-black text-xl">R$ 79,90</p>
+          <button class="btn-orange w-full mt-2 py-2.5 rounded-xl text-sm flex items-center justify-center gap-1.5">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Adicionar
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="#" class="inline-flex items-center gap-2 border-2 border-brand-orange text-brand-orange font-bold px-8 py-3.5 rounded-full hover:bg-brand-orange hover:text-white transition-all">
+        Ver todos os produtos
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PARA CRIADORES ======= -->
+<section class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="inline-block bg-green-100 text-green-700 text-sm font-bold px-4 py-1.5 rounded-full mb-4 tracking-wide">
+          🚜 Linha Agro / Criadores
+        </span>
+        <h2 class="font-display text-4xl font-black text-brand-dark mb-5 leading-tight">
+          Para quem produz, <br><span class="highlight-orange">preço justo e eficiência.</span>
+        </h2>
+        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+          Atendemos pequenos criadores e produtores rurais com condições especiais, mix completo de produtos agropecuários e entrega direta na sua propriedade.
+        </p>
+        <ul class="space-y-3 mb-8">
+          <li class="flex items-center gap-3 text-gray-700 font-medium">
+            <div class="w-6 h-6 bg-brand-orange rounded-full flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Rações para bovinos, aves e suínos
+          </li>
+          <li class="flex items-center gap-3 text-gray-700 font-medium">
+            <div class="w-6 h-6 bg-brand-orange rounded-full flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Medicamentos veterinários e vacinas
+          </li>
+          <li class="flex items-center gap-3 text-gray-700 font-medium">
+            <div class="w-6 h-6 bg-brand-orange rounded-full flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Condições especiais para pedidos em volume
+          </li>
+          <li class="flex items-center gap-3 text-gray-700 font-medium">
+            <div class="w-6 h-6 bg-brand-orange rounded-full flex items-center justify-center flex-shrink-0">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            Consultoria técnica gratuita via WhatsApp
+          </li>
+        </ul>
+        <a href="https://wa.me/5574988226804?text=Olá! Sou criador e gostaria de saber sobre condições especiais." target="_blank" class="btn-orange inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold uppercase tracking-widest text-sm">
+          Quero condições especiais
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-brand-orange-light rounded-2xl p-6 text-center">
+          <div class="text-5xl mb-3">🐄</div>
+          <p class="font-bold text-brand-dark">Bovinos</p>
+          <p class="text-sm text-gray-500 mt-1">Rações e suplementos</p>
+        </div>
+        <div class="bg-amber-50 rounded-2xl p-6 text-center">
+          <div class="text-5xl mb-3">🐔</div>
+          <p class="font-bold text-brand-dark">Aves</p>
+          <p class="text-sm text-gray-500 mt-1">Postura e corte</p>
+        </div>
+        <div class="bg-green-50 rounded-2xl p-6 text-center">
+          <div class="text-5xl mb-3">🐑</div>
+          <p class="font-bold text-brand-dark">Ovinos</p>
+          <p class="text-sm text-gray-500 mt-1">Mix completo</p>
+        </div>
+        <div class="bg-blue-50 rounded-2xl p-6 text-center">
+          <div class="text-5xl mb-3">🐖</div>
+          <p class="font-bold text-brand-dark">Suínos</p>
+          <p class="text-sm text-gray-500 mt-1">Crescimento e engorda</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= COMO FUNCIONA ======= -->
+<section class="py-20 bg-brand-dark text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-14">
+      <h2 class="font-display text-4xl font-black mb-3">Como funciona?</h2>
+      <p class="text-gray-400 text-lg">Simples, rápido e sem complicação</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-colors">
+        <div class="w-16 h-16 bg-brand-orange rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl font-black text-white shadow-lg shadow-orange-500/30">1</div>
+        <h3 class="font-display text-xl font-bold mb-3">Escolha</h3>
+        <p class="text-gray-400 leading-relaxed">Navegue pelo site ou nos chame no WhatsApp. A gente ajuda a encontrar o produto certo para o seu animal.</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-colors">
+        <div class="w-16 h-16 bg-brand-orange rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl font-black text-white shadow-lg shadow-orange-500/30">2</div>
+        <h3 class="font-display text-xl font-bold mb-3">Pague fácil</h3>
+        <p class="text-gray-400 leading-relaxed">Pix, cartão de crédito ou débito. Sem complicação, sem taxa escondida.</p>
+      </div>
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-8 text-center hover:bg-white/10 transition-colors">
+        <div class="w-16 h-16 bg-brand-orange rounded-2xl flex items-center justify-center mx-auto mb-5 text-2xl font-black text-white shadow-lg shadow-orange-500/30">3</div>
+        <h3 class="font-display text-xl font-bold mb-3">Receba rápido</h3>
+        <p class="text-gray-400 leading-relaxed">Entrega regional acelerada na sua porta. Acompanhe pelo WhatsApp.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= ATENDIMENTO WHATSAPP ======= -->
+<section class="py-20 bg-white">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-100 rounded-3xl p-10 md:p-14 flex flex-col md:flex-row items-center gap-8 text-center md:text-left">
+      <div class="w-24 h-24 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-2xl shadow-green-300">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.771.463 3.431 1.27 4.878L2.05 22l5.255-1.376A9.934 9.934 0 0012.004 22C17.527 22 22 17.523 22 12.004 22 6.477 17.527 2 12.004 2zm0 18.12a8.1 8.1 0 01-4.145-1.133l-.297-.177-3.12.817.833-3.042-.194-.312A8.094 8.094 0 013.88 12.004c0-4.482 3.647-8.12 8.124-8.12 4.482 0 8.124 3.638 8.124 8.12 0 4.477-3.642 8.116-8.124 8.116z"/></svg>
+      </div>
+      <div class="flex-1">
+        <h2 class="font-display text-3xl md:text-4xl font-black text-brand-dark mb-3">
+          Dúvida sobre qual ração escolher?
+        </h2>
+        <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+          Gente de verdade para te ajudar no WhatsApp. Sem bot, sem enrolação — resposta em minutos.
+        </p>
+        <a href="https://wa.me/5574988226804?text=Olá, JM Pet! Tenho uma dúvida sobre um produto." target="_blank" class="inline-flex items-center gap-2 bg-green-500 text-white font-bold px-8 py-4 rounded-full hover:bg-green-600 transition-colors shadow-lg shadow-green-200">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.771.463 3.431 1.27 4.878L2.05 22l5.255-1.376A9.934 9.934 0 0012.004 22C17.527 22 22 17.523 22 12.004 22 6.477 17.527 2 12.004 2zm0 18.12a8.1 8.1 0 01-4.145-1.133l-.297-.177-3.12.817.833-3.042-.194-.312A8.094 8.094 0 013.88 12.004c0-4.482 3.647-8.12 8.124-8.12 4.482 0 8.124 3.638 8.124 8.12 0 4.477-3.642 8.116-8.124 8.116z"/></svg>
+          Chamar agora no WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FAQ ======= -->
+<section class="py-20 bg-brand-gray">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-4xl font-black text-brand-dark">Perguntas frequentes</h2>
+    </div>
+    <div class="space-y-4" id="faq">
+
+      <details class="bg-white rounded-2xl border border-gray-100 group overflow-hidden">
+        <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-brand-dark list-none">
+          Vocês entregam na minha cidade?
+          <svg class="w-5 h-5 text-brand-orange transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+          Atendemos Juazeiro/BA, Petrolina/PE e região do Submédio São Francisco. Para confirmar se entregamos no seu endereço, fale com a gente no WhatsApp: (74) 98822-6804.
+        </div>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-gray-100 group overflow-hidden">
+        <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-brand-dark list-none">
+          Qual o prazo de entrega?
+          <svg class="w-5 h-5 text-brand-orange transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+          Pedidos realizados até 14h são entregues no mesmo dia para Juazeiro e Petrolina. Demais localidades em até 48h úteis.
+        </div>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-gray-100 group overflow-hidden">
+        <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-brand-dark list-none">
+          Posso pagar parcelado no cartão?
+          <svg class="w-5 h-5 text-brand-orange transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+          Sim! Aceitamos cartão de crédito em até 3x sem juros, cartão de débito, Pix e dinheiro (para retirada na loja).
+        </div>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-gray-100 group overflow-hidden">
+        <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-brand-dark list-none">
+          Como faço uma troca ou devolução?
+          <svg class="w-5 h-5 text-brand-orange transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+          Entre em contato no WhatsApp em até 7 dias após o recebimento. Produtos com defeito ou avaria têm troca imediata, sem burocracia.
+        </div>
+      </details>
+
+      <details class="bg-white rounded-2xl border border-gray-100 group overflow-hidden">
+        <summary class="flex items-center justify-between p-6 cursor-pointer font-bold text-brand-dark list-none">
+          Vocês têm loja física?
+          <svg class="w-5 h-5 text-brand-orange transition-transform group-open:rotate-45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </summary>
+        <div class="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+          Sim, estamos localizados em Juazeiro/BA. Você pode retirar seus pedidos pessoalmente ou agendar pelo WhatsApp.
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CTA FINAL ======= -->
+<section class="py-24 bg-brand-orange relative overflow-hidden">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-4 left-10 text-white text-9xl">🐕</div>
+    <div class="absolute bottom-4 right-10 text-white text-9xl">🐈</div>
+  </div>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 text-center relative z-10">
+    <h2 class="font-display text-5xl font-black text-white mb-5 leading-tight">
+      Seu pet merece o melhor.<br>E você merece praticidade.
+    </h2>
+    <p class="text-white/90 text-xl mb-10">
+      Comece agora com preços especiais de lançamento.
+    </p>
+    <a href="#produtos" class="inline-flex items-center gap-3 bg-white text-brand-orange font-black px-10 py-5 rounded-full text-lg uppercase tracking-widest hover:bg-brand-dark hover:text-white transition-all shadow-2xl">
+      Quero cuidar bem do meu pet
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer class="bg-brand-dark text-white py-14">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid md:grid-cols-4 gap-10 mb-10">
+      <div class="col-span-2 md:col-span-1">
+        <div class="flex items-center mb-4">
+          <span class="font-display text-3xl font-black text-white">JM</span>
+          <span class="font-display text-3xl font-black text-brand-orange">PET</span>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-5">
+          Tudo para o cuidado do seu animal, com entrega rápida e atendimento humanizado.
+        </p>
+        <div class="pix-badge inline-flex">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Pix: (74) 98822-6804
+        </div>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-4 text-white">Categorias</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a href="#" class="hover:text-brand-orange transition-colors">🐕 Cães</a></li>
+          <li><a href="#" class="hover:text-brand-orange transition-colors">🐈 Gatos</a></li>
+          <li><a href="#" class="hover:text-brand-orange transition-colors">🦜 Pássaros</a></li>
+          <li><a href="#" class="hover:text-brand-orange transition-colors">💊 Medicamentos</a></li>
+          <li><a href="#" class="hover:text-brand-orange transition-colors">🛁 Higiene</a></li>
+          <li><a href="#" class="hover:text-brand-orange transition-colors">🚜 Linha Agro</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-4 text-white">Informações</h4>
+        <ul class="space-y-2 text-gray-400 text-sm">
+          <li><a href="#" class="hover:text-brand-orange transition-colors">Sobre nós</a></li>
+          <li><a href="#" class="hover:text-brand-orange transition-colors">Política de entrega</a></li>
+          <li><a href="#" class="hover:text-brand-orange transition-colors">Trocas e devoluções</a></li>
+          <li><a href="#" class="hover:text-brand-orange transition-colors">Privacidade</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-4 text-white">Contato</h4>
+        <ul class="space-y-3 text-gray-400 text-sm">
+          <li class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            (74) 98822-6804
+          </li>
+          <li class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F58220" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Juazeiro, Bahia
+          </li>
+        </ul>
+        <a href="https://wa.me/5574988226804" target="_blank" class="mt-4 inline-flex items-center gap-2 bg-green-500 text-white font-bold px-5 py-2.5 rounded-full text-sm hover:bg-green-600 transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.004 2C6.477 2 2 6.477 2 12.004c0 1.771.463 3.431 1.27 4.878L2.05 22l5.255-1.376A9.934 9.934 0 0012.004 22C17.527 22 22 17.523 22 12.004 22 6.477 17.527 2 12.004 2z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-gray-500 text-sm">
+      <p>© 2025 JM Pet. Todos os direitos reservados.</p>
+      <div class="flex items-center gap-3">
+        <span class="text-xs">Pagamento seguro</span>
+        <div class="pix-badge text-xs py-1 px-3">Pix</div>
+        <div class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded">Visa</div>
+        <div class="bg-red-600 text-white text-xs font-bold px-3 py-1 rounded">Master</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>

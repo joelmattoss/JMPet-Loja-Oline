@@ -1,0 +1,163 @@
+🐾 JM Pet - Site
+Site institucional/loja virtual da JM Pet - "Aqui o seu Pet é prioridade".
+📁 Estrutura do projeto
+jmpet/
+├── index.html          ← Site completo (HTML + CSS + JS em um único arquivo)
+└── assets/
+    └── logo.jpg        ← Logo da JM Pet
+🚀 Como usar
+
+Abrir localmente: basta abrir o arquivo index.html no navegador (duplo-clique).
+Publicar online: envie a pasta jmpet inteira para qualquer hospedagem (Hostinger, Vercel, Netlify, GitHub Pages, etc.).
+
+
+⚠️ IMAGENS QUE VOCÊ PRECISA ENVIAR
+Construí o site usando fallbacks visuais (placeholders coloridos com o nome do produto) para que ele já apareça bonito mesmo sem as fotos reais. Mas para o site ficar profissional, me envie estas imagens — pode tirar com o celular, fundo branco:
+📷 Imagens a substituir:
+Arquivo a criarO que deve aparecer na fotoassets/hero.pngComposição com os animais (cachorro, gato, vaca, galinha, ovelha, porco) — pode ser a mesma imagem do design originalassets/areia.pngFoto do produto Areia Maz Cat 12kg (saco/embalagem)assets/billy.pngFoto da Ração Billy Dog 13kg (saco)assets/bistedog.pngFoto da Ração Bistedog 10,1kg (saco)assets/cama.pngFoto da Cama Pet Pelúcia GG
+Como substituir:
+
+Salve as fotos na pasta assets/ com os nomes da tabela acima.
+Abra o index.html num editor de texto.
+Procure pela lista const products = [ (perto da linha 700) e troque os caminhos:
+
+javascript{
+    id: 1,
+    name: "Areia Maz Cat",
+    weight: "12kg",
+    price: 35.90,
+    image: "assets/areia.png",   // ← coloque aqui o caminho da imagem real
+    fallback: createPlaceholder(...),  // pode manter o fallback de segurança
+    ...
+}
+
+Para a imagem do hero (animais), procure por hero-animals no HTML e troque o src do <img> pelo assets/hero.png.
+
+
+✨ Funcionalidades já prontas
+
+✅ Responsivo — funciona em celular, tablet e desktop
+✅ Header com busca funcional
+✅ Navegação por categorias: Dog, Cat, Pássaros, Medicamentos, Higiene, Linha/Agro
+✅ Carrinho de compras que envia o pedido direto pro WhatsApp da loja
+✅ Botão WhatsApp flutuante sempre visível
+✅ Pix (74) 98822-6804 — clique copia a chave
+✅ Animações suaves ao carregar a página
+✅ Toast de notificação ao adicionar produto
+✅ Ícones modernos (biblioteca Lucide)
+✅ Fontes profissionais (Plus Jakarta Sans)
+
+
+🎨 Cores do projeto
+
+Laranja principal: #F97316
+Laranja escuro (hover): #EA580C
+Laranja claro (fundos): #FFEDD5
+Texto principal: #1F2937
+WhatsApp: #25D366
+
+Tudo está em variáveis CSS no topo do arquivo — fácil de mudar.
+
+📞 Contato configurado
+
+WhatsApp: (74) 98822-6804
+Pix: 74988226804
+Localização: Petrolina - PE
+
+Se algum dado estiver errado, é só me avisar que eu ajusto.
+
+💡 Próximos passos (opcionais)
+Se quiser evoluir o site, posso adicionar:
+
+Páginas individuais por categoria (Dog, Cat, etc.)
+Página de detalhes do produto
+Sistema de cadastro/login real
+Painel administrativo pra gerenciar produtos
+Integração com pagamento online (Mercado Pago / PagSeguro)
+Mais produtos no catálogo
+Banner rotativo no topo
+Seção "Mais vendidos" + "Promoções"
+Newsletter / cupom de desconto
+
+É só pedir!🐾 JM Pet - Site
+Site institucional/loja virtual da JM Pet - "Aqui o seu Pet é prioridade".
+📁 Estrutura do projeto
+jmpet/
+├── index.html          ← Site completo (HTML + CSS + JS em um único arquivo)
+└── assets/
+    └── logo.jpg        ← Logo da JM Pet
+🚀 Como usar
+
+Abrir localmente: basta abrir o arquivo index.html no navegador (duplo-clique).
+Publicar online: envie a pasta jmpet inteira para qualquer hospedagem (Hostinger, Vercel, Netlify, GitHub Pages, etc.).
+
+
+⚠️ IMAGENS QUE VOCÊ PRECISA ENVIAR
+Construí o site usando fallbacks visuais (placeholders coloridos com o nome do produto) para que ele já apareça bonito mesmo sem as fotos reais. Mas para o site ficar profissional, me envie estas imagens — pode tirar com o celular, fundo branco:
+📷 Imagens a substituir:
+Arquivo a criarO que deve aparecer na fotoassets/hero.pngComposição com os animais (cachorro, gato, vaca, galinha, ovelha, porco) — pode ser a mesma imagem do design originalassets/areia.pngFoto do produto Areia Maz Cat 12kg (saco/embalagem)assets/billy.pngFoto da Ração Billy Dog 13kg (saco)assets/bistedog.pngFoto da Ração Bistedog 10,1kg (saco)assets/cama.pngFoto da Cama Pet Pelúcia GG
+Como substituir:
+
+Salve as fotos na pasta assets/ com os nomes da tabela acima.
+Abra o index.html num editor de texto.
+Procure pela lista const products = [ (perto da linha 700) e troque os caminhos:
+
+javascript{
+    id: 1,
+    name: "Areia Maz Cat",
+    weight: "12kg",
+    price: 35.90,
+    image: "assets/areia.png",   // ← coloque aqui o caminho da imagem real
+    fallback: createPlaceholder(...),  // pode manter o fallback de segurança
+    ...
+}
+
+Para a imagem do hero (animais), procure por hero-animals no HTML e troque o src do <img> pelo assets/hero.png.
+
+
+✨ Funcionalidades já prontas
+
+✅ Responsivo — funciona em celular, tablet e desktop
+✅ Header com busca funcional
+✅ Navegação por categorias: Dog, Cat, Pássaros, Medicamentos, Higiene, Linha/Agro
+✅ Carrinho de compras que envia o pedido direto pro WhatsApp da loja
+✅ Botão WhatsApp flutuante sempre visível
+✅ Pix (74) 98822-6804 — clique copia a chave
+✅ Animações suaves ao carregar a página
+✅ Toast de notificação ao adicionar produto
+✅ Ícones modernos (biblioteca Lucide)
+✅ Fontes profissionais (Plus Jakarta Sans)
+
+
+🎨 Cores do projeto
+
+Laranja principal: #F97316
+Laranja escuro (hover): #EA580C
+Laranja claro (fundos): #FFEDD5
+Texto principal: #1F2937
+WhatsApp: #25D366
+
+Tudo está em variáveis CSS no topo do arquivo — fácil de mudar.
+
+📞 Contato configurado
+
+WhatsApp: (74) 98822-6804
+Pix: 74988226804
+Localização: Petrolina - PE
+
+Se algum dado estiver errado, é só me avisar que eu ajusto.
+
+💡 Próximos passos (opcionais)
+Se quiser evoluir o site, posso adicionar:
+
+Páginas individuais por categoria (Dog, Cat, etc.)
+Página de detalhes do produto
+Sistema de cadastro/login real
+Painel administrativo pra gerenciar produtos
+Integração com pagamento online (Mercado Pago / PagSeguro)
+Mais produtos no catálogo
+Banner rotativo no topo
+Seção "Mais vendidos" + "Promoções"
+Newsletter / cupom de desconto
+
+É só pedir!
